@@ -9,20 +9,20 @@ function randomNumbers(min, max, options = {}) {
 
   const { exclude } = options;
 
-  let availableNumbers = Array.from(
-    { length: max - min + 1 },
-    (_, i) => i + min
-  );
+  const rangeSize = max - min + 1;
 
-  if (exclude) {
-    const filterCondition = Array.isArray(exclude)
-      ? (num) => !exclude.includes(num)
-      : (num) => num < exclude.start || num > exclude.end;
+  for (let attempt = 0; attempt < rangeSize; attempt++) {
+    const randomNum = Math.floor(Math.random() * rangeSize) + min;
 
-    availableNumbers = availableNumbers.filter(filterCondition);
+    if (
+      !exclude ||
+      (Array.isArray(exclude)
+        ? !exclude.includes(randomNum)
+        : randomNum < exclude.start || randomNum > exclude.end)
+    ) {
+      return randomNum;
+    }
   }
 
-  return availableNumbers.length === 0
-    ? null
-    : availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+  return null; // Retorna null se nenhum número válido for encontrado (por exemplo, devido a exclusões abrangendo todo o intervalo).
 }
