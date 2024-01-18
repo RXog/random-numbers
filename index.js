@@ -5,7 +5,8 @@ function randomNumbers(min, max, options = {}) {
     min = 0;
   }
 
-  [min, max] = [Math.min(min, max), Math.max(min, max)];
+  min = Math.min(min, max);
+  max = Math.max(min, max);
 
   const { exclude } = options;
 
