@@ -5,25 +5,31 @@ function randomNumbers(min, max, options = {}) {
     min = 0;
   }
 
-  min = Math.min(min, max);
-  max = Math.max(min, max);
+  if (min > max) {
+    [min, max] = [max, min];
+  }
 
   const { exclude } = options;
 
-  const rangeSize = max - min + 1;
-
-  for (let attempt = 0; attempt < rangeSize; attempt++) {
-    const randomNum = Math.floor(Math.random() * rangeSize) + min;
-
-    if (
-      !exclude ||
-      (Array.isArray(exclude)
-        ? !exclude.includes(randomNum)
-        : randomNum < exclude.start || randomNum > exclude.end)
-    ) {
-      return randomNum;
+  const isExcluded = (num) => {
+    if (exclude === undefined) {
+      return false;
     }
-  }
 
-  return null; // Retorna null se nenhum número válido for encontrado (por exemplo, devido a exclusões abrangendo todo o intervalo).
+    if (Array.isArray(exclude)) {
+      return exclude.includes(num);
+    } else if (typeof exclude === "object") {
+      return num >= exclude.start && num <= exclude.end;
+    } else {
+      return num === exclude;
+    }
+  };
+
+  let randomNumber;
+
+  do {
+    randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  } while (isExcluded(randomNumber));
+
+  return randomNumber;
 }

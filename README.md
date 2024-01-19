@@ -6,10 +6,19 @@ A JavaScript function for generating random numbers within a specified range, wi
 
 ```javascript
 // Example usage:
-console.log(randomNumbers(10));  // Generates a random number between 0 and 10 (inclusive).
-console.log(randomNumbers(10, 100));  // Generates a random number between 10 and 100 (inclusive).
-console.log(randomNumbers(10, { exclude: [1, 3, 6] }));  // Generates a random number between 0 and 10, excluding 1, 3, and 6.
-console.log(randomNumbers(10, { exclude: { start: 3, end: 8 } }));  // Generates a random number between 0 and 10, excluding the range from 3 to 8.
+const randomNumbers = require('./index'); // Replace with the actual path to your file
+
+// Example 1: Range from 1 to 1000, excluding the range from 200 to 300.
+console.log(randomNumbers(1, 1000, { exclude: { start: 200, end: 300 } 
+
+// Example 2: Range from 20 to 30, excluding values 22 and 25.
+console.log(randomNumbers(20, 30, { exclude: [22, 25] }));
+
+// Example 3: Range from 100 to 150, excluding the value 120.
+console.log(randomNumbers(100, 150, { exclude: 120 }));
+
+// Example 4: Range from -5 to 5, without exclusions.
+console.log(randomNumbers(-5, 5));
 ```
 
 ## Notes

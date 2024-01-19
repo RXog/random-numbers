@@ -1,0 +1,12 @@
+{
+	"name": "random-numbers-with-exclusions",
+	"version": "1.0.0",
+	"description": "Uma função para gerar números aleatórios com opção de exclusão.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": ["random", "numbers", "generator", "exclusions"],
+	"author": "Valdir Ronis",
+	"license": "MIT"
+}
