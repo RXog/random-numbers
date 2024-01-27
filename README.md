@@ -9,7 +9,7 @@ A JavaScript function for generating random numbers within a specified range, wi
 const randomNumbers = require('./index'); // Replace with the actual path to your file
 
 // Example 1: Range from 1 to 1000, excluding the range from 200 to 300.
-console.log(randomNumbers(1, 1000, { exclude: { start: 200, end: 300 } 
+console.log(randomNumbers(1, 1000, { exclude: { start: 200, end: 300 }})); 
 
 // Example 2: Range from 20 to 30, excluding values 22 and 25.
 console.log(randomNumbers(20, 30, { exclude: [22, 25] }));
