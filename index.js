@@ -33,3 +33,5 @@ function randomNumbers(min, max, options = {}) {
 
   return randomNumber;
 }
+
+module.exports = randomNumbers;

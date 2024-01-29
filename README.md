@@ -6,7 +6,8 @@ A JavaScript function for generating random numbers within a specified range, wi
 
 ```javascript
 // Example usage:
-const randomNumbers = require('./index'); // Replace with the actual path to your file
+// npm install random-numbers-with-exclusions
+const randomNumbers = require('random-numbers-with-exclusions');
 
 // Example 1: Range from 1 to 1000, excluding the range from 200 to 300.
 console.log(randomNumbers(1, 1000, { exclude: { start: 200, end: 300 }})); 
